@@ -56,6 +56,11 @@ router.post('/add-page', function(req, res) {
         Page.findOne({slug: slug}, function(err, page) {
             if(page) {
                 req.flash('danger', 'Page slug exists choose another');
+                res.render('admin/add_page', {
+                    title: title,
+                    slug: slug,
+                    content: content
+                });
             } else {
                 var page = new Page({
                     title: title,
