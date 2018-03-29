@@ -26,6 +26,9 @@ app.set('view engine', 'ejs');
 //Set public folder
 app.use(express.static(path.join(__dirname, 'public')));
 
+//Set global errors
+app.locals.errors = null;
+
 //Express session middleware
 app.set('trust proxy', 1) // trust first proxy
 app.use(session({
