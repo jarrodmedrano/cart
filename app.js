@@ -1,8 +1,18 @@
-var express = require('express');
-var path = require('path');
+const express = require('express');
+const path = require('path');
+const mongoose = require('mongoose');
+
+//connect to the db
+mongoose.connect('mongodb://localhost/cmscart');
+const db = mongoose.connection;
+
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+   console.log('Connected to mongodb');
+});
 
 //Init app
-var app = express();
+const app = express();
 
 // View engine setup
 app.set('views', path.join(__dirname, 'views'));
